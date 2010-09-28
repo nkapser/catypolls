@@ -1,0 +1,57 @@
+Use this README file to introduce your application and point to useful places in the API for learning more.
+Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+Go to your project location.
+Go to your project location.
+
+1. Add following required gems in config/environment.rb
+
+config.gem "sqlite3-ruby", :lib => "sqlite3"
+  # config.gem "aws-s3", :lib => "aws/s3"
+config.gem "rspec", :lib => false, :version => ">= 1.3.0"
+config.gem "rspec-rails", :lib => false, :version => ">= 1.3.2"
+config.gem "authlogic", :lib => false, :version => ">= 2.1.5"
+config.gem 'shoulda', :lib => false, :version => "2.11.0"
+
+2. run the following command to install the gems
+rake gems:install
+
+3. install sqlite3 dll
+download http://www.sqlite.org/sqlitedll-3_6_23_1.zip for dll file
+for command line download the following for exe file
+	http://www.sqlite.org/sqlite-3_6_23_1.zip
+
+copy both the .dll and .exe files to c:\windows\system32
+
+4. run the following command to setup rspec
+ruby script/generate rspec
+
+5. create database files for sqlite
+mkdir db/development.sqlite3
+mkdir db/test.sqlite3
+mkdir db/production.sqlite3
+
+6. delete public/index.html
+
+7. Creating model, controller, views
+for configuring authlogic: http://github.com/binarylogic/authlogic_example
+
+Models: create files user.rb & user_session.rb
+file user.rb
+class User < ActiveRecord::Base
+    acts_as_authentic
+end
+
+file user_session.rb
+class UserSession < Authlogic::Session::Base
+end
+
+
+8. editing routes.rb
+  map.root :controller => "home"
+
+  map.resource :user_session
+  map.login 'user/login', :controller => "user_sessions", :action => "new" # optional, this just sets the root route
+  map.logout 'user/logout', :controller => "user_sessions", :action => "destroy" # optional, this just sets the root route
+
+  map.resource :account, :controller => "users"
+  map.resources :users

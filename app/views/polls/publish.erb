@@ -1,0 +1,4 @@
+<h3>Poll has published successfully</h3>
+Question: <%= @poll.question %>
+Status: <%= @poll.is_published? %>
+Url: <%= external_url(@poll.uniqueid) %>

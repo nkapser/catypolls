@@ -11,17 +11,64 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-root { 
-    display: block;
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
 }
 
-#header{
-    height: 100px;
-    color: silver;
+root {
+display: block;
 }
-#page{
-    margin: 20px 0px 20px 0px;
+
+#wrapper {
+width: 928px;
+margin-left: auto;
+margin-right: auto;
 }
-#footer{
-    position: relative;
+
+#header {
+height: 100px;
+color: silver;
+}
+
+#page {
+overflow: hidden;
+}
+
+#main_content {
+width: 708px;
+float: left;
+}
+
+#right_section {
+width: 220px;
+float: left;
+}
+
+#navigation{}
+#navigation ul{ overflow:hidden; }
+#navigation ul li{ float:left; list-style: none; margin: 5px 10px 5px 0px;}
+#navigation ul li a{ text-decoration: none; }
+
+#intro{	border: 1px solid black; padding: 10px;}
+#intro h2{ padding: 5px;}
+
+.active_polls{  }
+.active_polls .category{ margin-top:10px; background-color: #88ACD5; padding: 4px; }
+
+.active_poll{ border:1px solid black; margin:10px 5px; padding:20px; }
+.active_poll h2{ font-size: 18px; }
+.active_poll .option{ margin: 3px 0 3px 15px; }
+.active_poll input[type='submit']{margin-top: 5px;}
+
+#footer {
+border-top: 1px solid black;
+margin-top: 10px;
+display: block;
+position: relative;
 }

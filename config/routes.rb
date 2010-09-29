@@ -43,10 +43,18 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
 
+  map.voting 'polls/:uniqueid/vote', :controller => 'polls', :action => 'vote'
+  map.external 'polls/:uniqueid/view', :controller => 'polls', :action => 'view'
+  map.publish_poll 'polls/:id/publish', :controller => "polls", :action => "publish"
+  map.resources :polls do |poll|
+    poll.resources :discussions
+  end
+
+  map.connect '/:category', :controller => 'home', :action => "index"
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # map.connect ':controller/:action/:id'
+  # map.connect ':controller/:action/:id.:format'
 end

@@ -1,0 +1,23 @@
+<div class="row">
+  <%=f.label :Question %>*<br/>
+  <%=f.text_field :question%>
+</div>
+<div class="row">
+  <%= f.label :options_for_poll %><br/>
+  	<% f.fields_for :options do |option_form|  %>
+    	<%= render :partial => 'option_fields', :locals => { :f => option_form  } %>
+	<% end %>
+  <p><%= link_to_add_fields "Add Option", f, :options %></p>
+</div>
+<div class='row'>
+ <%= f.label :start_date %>
+ <%= f.text_field :start_date%>
+</div>
+<div class='row'>
+ <%= f.label :end_date %>
+ <%= f.text_field :end_date%>
+</div>
+<div class="row">
+  <%= f.label :category %>* 
+  <%=f.select :category_id, categories %>
+</div>

@@ -1,0 +1,13 @@
+<h3>All the Polls</h3>
+
+<% if @polls.empty? %>
+	There are no polls. <strong><%= link_to 'Create a Poll Now!', new_poll_path %></strong>
+<% end %>
+
+<h3><%= link_to 'Create a new Poll', new_poll_path %></h3>
+
+<% @polls.each do |poll| %>
+<div class='poll'>
+	<%= poll.question %> | <%= link_to 'Show', poll_path(poll)%> | <% if !poll.is_published? %><%= link_to 'Edit', edit_poll_path(poll)%> <%else%> Published <%end%>
+</div>	
+<% end %>

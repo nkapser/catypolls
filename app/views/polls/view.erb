@@ -1,0 +1,11 @@
+<% form_tag voting_path(@poll.uniqueid) do |f|%>
+<div class='active_poll'>
+	<h2><%= @poll.question %></h2>
+	<div class='options'>
+		<% @poll.options.each do |option| %>
+			<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
+		<% end %>
+	</div>
+	<%= submit_tag 'vote'%>
+</div>
+<% end %>

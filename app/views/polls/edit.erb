@@ -1,0 +1,12 @@
+<h3>Edit Poll</h3>
+
+<div class='errors'>
+ <%= error_messages_for :poll %>
+</div>
+
+<% form_for @poll, :poll do |f| %>
+<%= render :partial => "poll", :locals => {:f => f} %>
+<div class="row">
+  <%= f.submit  "Update Poll" %> | <%= link_to 'Cancel', poll_path(@poll)%>
+</div>
+<% end %>

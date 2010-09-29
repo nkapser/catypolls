@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
    filter_parameter_logging :password, :password_confirmation
     helper_method :current_user_session, :current_user
 
+    helper_method :current_title
+    
     private
       def current_user_session
         return @current_user_session if defined?(@current_user_session)
@@ -47,5 +49,9 @@ class ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+    
+    def current_title
+      @title ||= "Create Free Polls. Share Polls. Discussion about Polls. Categorize Polls."
     end
 end

@@ -1,0 +1,32 @@
+<h3>Poll</h3>
+<div class='poll'>
+	Question: <%= @poll.question %>
+	<div class='options'>
+		<ol>
+		<% total_votes = 0 %>	
+		<% @poll.options.each do |option| %>
+			<% total_votes = total_votes + option.counter %>
+			<li><%= option.name %> | votes casted: <%= option.counter%></li>			
+		<%end%>
+		Total votes: <%= total_votes %>		
+		</ol>
+	</div>
+	<div class='dates'>
+		Start Date: <%= @poll.start_date %> <br>
+		End Date: <%= @poll.end_date %>
+	</div>
+	<div class='poll_category'>
+		Poll Category: <%= @poll.category.name %>
+	</div>
+	<%if !@poll.is_published?%>
+	<%= link_to 'Edit', edit_poll_path(@poll)%> | <%= link_to 'Publish<small>*</small>', publish_poll_path(@poll)%> 
+	<p>
+		<small>* Once published the poll cannot be edited.</small>
+	</p>
+	<%else%>
+		<p> This poll has been already published.</p>
+	<% end %>
+	<p>
+		<%= link_to 'Check All The Polls', polls_path %>
+	</p>
+</div>

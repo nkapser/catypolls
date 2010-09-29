@@ -1,10 +1,18 @@
 <html>
 <head>
   <title>
-
+	<%= current_title %>
   </title>
+
+<%= stylesheet_link_tag "style"  %>
+
+<%= javascript_include_tag "jq/jquery-1.4.2"  %>
+<%= javascript_include_tag "jq/application_jq"  %>
+<%= javascript_include_tag "jq/jquery-ui-1.8.2.custom.min"  %>
+
 </head>
 <body>
+<div id='wrapper'>	
   <div id="header">
     <div class="header_login">
       <%= link_to "Home", root_path %> |
@@ -15,11 +23,23 @@
       <% end %>
     </div>
   </div>
+ 	<div id='navigation'>
+ 		<ul>
+ 			<li><%= link_to 'Home', root_path %></li>
+			<li><%= link_to 'About Us' %></li>
+			<li><%= link_to 'Contact Us' %></li>
+ 		</ul>
+	</div>
   <div id="page">
-    <%= yield %>
+	<div id='main_content'>
+    	<%= yield %>
+	</div>
+	<div id='right_section'>
+	</div>
   </div>
   <div id="footer">
     <%= link_to "About Us" %> | <%= link_to "Contact Us" %>
   </div>
+</div>
 </body>
 </html>

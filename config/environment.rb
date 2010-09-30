@@ -23,7 +23,7 @@ config.gem "rspec", :lib => false, :version => ">= 1.3.0"
 config.gem "rspec-rails", :lib => false, :version => ">= 1.3.2"
 config.gem "authlogic", :lib => false, :version => ">= 2.1.5"
 config.gem 'shoulda', :lib => false, :version => ">=2.11.0"
-config.gem 'mislav-will_paginate',  :lib => 'will_paginate', :source => 'http://gems.github.com'
+config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
 
 
 

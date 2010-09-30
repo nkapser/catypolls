@@ -7,8 +7,12 @@ class Poll < ActiveRecord::Base
 
   validates_presence_of :question
 
-  def self.fetch_all_active(category)
-    self.find(:all, :conditions => ["is_active = ? and category_id = ?", true, self.get_category_id(category)])
+  def self.per_page
+    2
+  end
+
+  def self.fetch_all_active(category, page)
+      self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and category_id = ?", true, self.get_category_id(category)]
   end
   
   def publish!

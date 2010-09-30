@@ -37,6 +37,14 @@
     	<%= yield %>
 	</div>
 	<div id='right_section'>
+		<div class='category_polls'>
+			<div class='heading'>Categories</div>
+			<ul>
+				<% top_categories.each do |category| %>
+				<li><%= link_to category, category_polls_path(category) %></li>
+				<% end %>
+			</ul>
+		</div>
 	</div>
   </div>
   <div id="footer">

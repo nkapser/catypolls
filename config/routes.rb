@@ -51,7 +51,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.about_us '/about-us', :controller => 'home', :action => 'aboutus'
-  map.connect '/:category', :controller => 'home', :action => "index"
+  map.category_polls '/:category/polls', :controller => 'categories', :action => "index"
 
 
   # Install the default routes as the lowest priority.

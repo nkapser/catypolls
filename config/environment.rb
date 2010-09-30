@@ -23,6 +23,8 @@ config.gem "rspec", :lib => false, :version => ">= 1.3.0"
 config.gem "rspec-rails", :lib => false, :version => ">= 1.3.2"
 config.gem "authlogic", :lib => false, :version => ">= 2.1.5"
 config.gem 'shoulda', :lib => false, :version => ">=2.11.0"
+config.gem 'mislav-will_paginate',  :lib => 'will_paginate', :source => 'http://gems.github.com'
+
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

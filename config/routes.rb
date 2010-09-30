@@ -50,7 +50,9 @@ ActionController::Routing::Routes.draw do |map|
     poll.resources :discussions
   end
 
+  map.about_us '/about-us', :controller => 'home', :action => 'aboutus'
   map.connect '/:category', :controller => 'home', :action => "index"
+
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

@@ -14,21 +14,23 @@
 <body>
 <div id='wrapper'>	
   <div id="header">
-    <div class="header_login">
-      <%= link_to "Home", root_path %> |
-     <% if current_user.nil? %>
-      <%= link_to "Login", login_path %>
-      <% else %>      
-      <%= link_to "Logout",  logout_url %>
-      <% end %>
-    </div>
+	<div id='logo'>
+		<%= image_tag 'cp-logo1.png'%>
+	</div>
   </div>
  	<div id='navigation'>
  		<ul>
  			<li><%= link_to 'Home', root_path %></li>
-			<li><%= link_to 'About Us' %></li>
-			<li><%= link_to 'Contact Us' %></li>
+			<li><%= link_to 'About Us', about_us_path %></li>
+			<li><%= link_to 'Contact Us' %></li>			
  		</ul>
+		<ul id='login_details'>
+		 <% if current_user.nil? %>
+	      	<li><%= link_to "Login", login_path %> | <%= link_to "Sign Up (new users)", new_account_path%></li>
+	      <% else %>      
+	      	<li>Welcome <%= current_user.email %> <%= link_to "Logout",  logout_url %></li>
+	      <% end %>
+		</ul>
 	</div>
   <div id="page">
 	<div id='main_content'>
@@ -38,7 +40,10 @@
 	</div>
   </div>
   <div id="footer">
-    <%= link_to "About Us" %> | <%= link_to "Contact Us" %>
+    <div id='footer_content'>	
+		<div id='copy'>&copy;CatyPolls 2010</div> 
+		<div id='links'><%= link_to "About Us" %> | <%= link_to "Contact Us" %></div>
+	</div>
   </div>
 </div>
 </body>

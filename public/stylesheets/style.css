@@ -32,12 +32,14 @@ margin-right: auto;
 }
 
 #header {
+margin-top: 10px;
 height: 100px;
 color: silver;
 }
 
 #page {
 overflow: hidden;
+margin-top: 20px;
 }
 
 #main_content {
@@ -50,25 +52,28 @@ width: 220px;
 float: left;
 }
 
-#navigation{}
-#navigation ul{ overflow:hidden; }
-#navigation ul li{ float:left; list-style: none; margin: 5px 10px 5px 0px;}
-#navigation ul li a{ text-decoration: none; }
+h1{ font-size: 20px;}
+.lcolor { color: #CA8EFF; }
+
+h2.heading { font-size:22px;margin-bottom:10px; }
+
+#navigation{background:url("/images/nav-bg.png") repeat scroll 0 0 transparent;overflow:hidden;}
+#navigation ul{height:36px; float:left;}
+#navigation #login_details{height:36px; float:right;}
+#navigation ul li{ float:left;list-style:none outside none;line-height:2.5em; padding:0px 10px;}
+#navigation ul li a{ text-decoration: none; font-size: 14px; }
+#navigation ul li a:hover{ text-decoration: none; color: #ffffff;}
 
 #intro{	border: 1px solid black; padding: 10px;}
 #intro h2{ padding: 5px;}
 
 .active_polls{  }
-.active_polls .category{ margin-top:10px; background-color: #88ACD5; padding: 4px; }
+.active_polls .category{ margin-top:15px; background-color: #E0E0E0; padding: 5px 0px 5px 5px; } /* #E0E0E0 */
 
 .active_poll{ border:1px solid black; margin:10px 5px; padding:20px; }
 .active_poll h2{ font-size: 18px; }
 .active_poll .option{ margin: 3px 0 3px 15px; }
 .active_poll input[type='submit']{margin-top: 5px;}
 
-#footer {
-border-top: 1px solid black;
-margin-top: 10px;
-display: block;
-position: relative;
-}
+#footer {border-top: 1px solid black;margin-top: 10px;display: block;position: relative;}
+#footer_content{margin-top: 20px;}

@@ -3,6 +3,8 @@ class CreateDiscussions < ActiveRecord::Migration
     create_table :discussions do |t|
       t.integer :poll_id
       t.integer :user_id
+      t.string :text
+      t.integer :likes, :dislikes
       t.timestamps
     end
   end

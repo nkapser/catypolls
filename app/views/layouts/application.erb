@@ -10,12 +10,33 @@
 <%= javascript_include_tag "jq/application_jq"  %>
 <%= javascript_include_tag "jq/jquery-ui-1.8.2.custom.min"  %>
 
+
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-1322229301618377");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-1322229301618377", "test_leaderboard_top");
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+
 </head>
 <body>
 <div id='wrapper'>	
   <div id="header">
 	<div id='logo'>
 		<%= image_tag 'cp-logo1.png'%>
+	</div>
+	
+	<div class='header_ad'>
+	<!-- ca-pub-1322229301618377/test_leaderboard_top -->
+	<script type='text/javascript'>
+	GA_googleFillSlot("test_leaderboard_top");
+	</script>
 	</div>
   </div>
  	<div id='navigation'>
@@ -28,7 +49,7 @@
 		 <% if current_user.nil? %>
 	      	<li><%= link_to "Login", login_path %> | <%= link_to "Sign Up (new users)", new_account_path%></li>
 	      <% else %>      
-	      	<li>Welcome <%= current_user.email %> <%= link_to "Logout",  logout_url %></li>
+	      	<li>Welcome <%= current_user.email %> | <%= link_to 'Edit', edit_account_path %>  | <%= link_to "Logout",  logout_url %></li>
 	      <% end %>
 		</ul>
 	</div>
@@ -52,6 +73,13 @@
 		<div id='copy'>&copy;CatyPolls 2010</div> 
 		<div id='links'><%= link_to "About Us" %> | <%= link_to "Contact Us" %></div>
 	</div>
+	<% if !current_user.nil? %>
+	  <div class='last_login'>Last login at:
+	  <%=h current_user.last_login_at %> | 
+	  Last login ip:
+	  <%=h current_user.last_login_ip %>
+	  </div>
+	<% end %>
   </div>
 </div>
 </body>

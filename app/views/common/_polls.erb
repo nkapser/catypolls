@@ -8,13 +8,13 @@
 <% @polls.each do |poll| %>
 <div class='active_poll'>
 	<% form_tag voting_path(poll.uniqueid) do |f|%>
-		<h2><%= poll.question %></h2>
+		<h2><%= link_to poll.question, external_path(poll.uniqueid) %></h2>
 		<div class='options'>
 			<% poll.options.each do |option| %>
 				<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
 			<% end %>
 		</div>
-	<%= submit_tag 'vote'%>
+	<%= submit_tag 'vote'%> | <% if poll.discussions.count > 0 %> <%= link_to 'Join the discussion', external_path(poll.uniqueid) %> <%else%> <%= link_to 'Be First to comment on Poll', external_path(poll.uniqueid) %> <%end%>
 	<% end %>
 </div>
 <% end %>

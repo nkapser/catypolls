@@ -9,3 +9,24 @@
 	<%= submit_tag 'vote'%>
 </div>
 <% end %>
+<h3>Add your comment</h3>
+<% if current_user.nil? %>
+ Please <%= link_to 'login', login_path %> or <%= link_to 'Register', new_account_path %> to comment.
+<% else %>
+<div class='discussion_form'>
+	<% form_tag discussion_path(@poll.uniqueid) do |f| %>
+		<div class='row'>
+			<%= text_area_tag 'text'%>
+		</div>
+		<div class='row'>
+			<%= submit_tag 'Post Comment'%>
+		</div>
+	<% end %>
+</div>
+<% end %>
+<% @poll.discussions.each do |discussion| %>
+ <div class='comment'>
+	<%= discussion.text %>
+	-by <%= discussion.user.nickname %>
+ </div>	
+<%end%>

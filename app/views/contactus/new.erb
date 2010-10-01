@@ -1,0 +1,33 @@
+<h2 class='heading'>Contact Us</h2>
+<div class='warn'>* All fields are mandatory.</div>
+<% unless @contactus.errors.empty? %>
+<div class='errors'>
+<%= error_messages_for :contactus %>
+</div>
+<% end %>
+
+<% form_for @contactus do |f| %>
+	<div class='row'>
+		<%= f.label :name %>
+		<%= f.text_field :from %>
+	</div>
+	<div class='row'>
+		<%= f.label :email %>
+		<%= f.text_field :email%>
+	</div>
+	<div class='row'>
+		<%= f.label :category %>
+		<%= f.select :category, [["General", "General"],["Other", "Other"]]%>
+	</div>
+	<div class='row'>
+		<%= f.label :subject %>
+		<%= f.text_field :subject%>
+	</div>
+	<div class='row'>
+		<%= f.label :description %>
+		<%= f.text_area :description%>
+	</div>				
+	<div class='row'>
+		<%= f.submit 'Submit'%>
+	</div>
+<% end %>

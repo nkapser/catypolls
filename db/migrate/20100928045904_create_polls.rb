@@ -1,6 +1,7 @@
 class CreatePolls < ActiveRecord::Migration
   def self.up
     create_table :polls do |t|
+      t.string :description
       t.string :question
       t.boolean :is_active, :default => false
       t.datetime :start_date, :end_date

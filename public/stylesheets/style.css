@@ -21,6 +21,8 @@ vertical-align: baseline;
 background: transparent;
 }
 
+body{font-family: arial,helvetica,sans;}
+
 root {display: block;}
 
 #wrapper {width: 928px;margin-left: auto;margin-right: auto;}
@@ -37,7 +39,7 @@ h1{ font-size: 20px;}
 .lcolor { color: #CA8EFF; }
 .last_login{ font-size:12px;}
 
-h2.heading { font-size:22px;margin-bottom:10px; }
+h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 2px dashed black; }
 
 #navigation{background:url("/images/nav-bg.png") repeat scroll 0 0 transparent;overflow:hidden;}
 #navigation ul{height:36px; float:left;}
@@ -57,6 +59,24 @@ h2.heading { font-size:22px;margin-bottom:10px; }
 .active_poll h2 a {text-decoration: none;}
 .active_poll .option{ margin: 3px 0 3px 15px; }
 .active_poll input[type='submit']{margin-top: 5px;}
+
+.comment { border-top: 1px dotted black; margin-top: 10px; }
+.comment .author{ font-style:italic; font-size:14px; padding: 2px 0px;}
+.comment .details{ overflow: hidden; background-color: E8E8E8; margin-bottom: 4px;}
+.comment .details .author { float:left;}
+.comment .details .time { float:right; font-size: 10px; line-height: 2em;}
+.comment .desc{font-size:13px;}
+
+form .row{ padding: 5px 0px; }
+form .row label{ position:absolute; }
+form .row input, textarea, select{ margin-left: 100px;}
+form .row input[type='submit'] {position: relative;}
+
+.warn { font-size:12px; float:right; color: #ff0909;}
+
+.errors {border: 1px dashed red; padding: 5px 5px 0px;}
+.errors h2{ color: #ff0909;}
+.errors ul li{font-size:14px;list-style:disc outside none;margin-left:40px;padding:4px 0;}
 
 #right_section { width: 200px;float: left; }
 #right_section { margin-left: 20px; }

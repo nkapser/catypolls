@@ -3,7 +3,7 @@ class PollsController < ApplicationController
   before_filter :require_user, :except => [:view, :vote]
 
   def index
-    @polls = Poll.find(:all)
+    @polls = Poll.find(:all, :order => 'updated_at DESC')
   end
   
   def new
@@ -46,8 +46,7 @@ class PollsController < ApplicationController
   
   def view
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
-    # flash[:error] = "Poll Doesn't exist. Invalid Url" if @poll.nil?
-    # redirect_to :action => root_path if @poll.nil?
+    @discussions = @poll.discussions_by_latest(params[:page])
   end
   
   def vote

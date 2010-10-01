@@ -54,6 +54,9 @@ ActionController::Routing::Routes.draw do |map|
   map.category_polls '/:category/polls', :controller => 'categories', :action => "index"
   map.discussion '/discussion/:poll_unique_id', :controller => 'discussions', :action => 'new'
 
+  map.connect '/contactus-response', :controller => 'contactus', :action => 'contactus_response'
+  map.resource :contactus, :controller => 'contactus', :only => [:new, :create, :show]
+
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.

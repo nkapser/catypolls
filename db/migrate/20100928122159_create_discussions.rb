@@ -4,7 +4,8 @@ class CreateDiscussions < ActiveRecord::Migration
       t.integer :poll_id
       t.integer :user_id
       t.string :text
-      t.integer :likes, :dislikes
+      t.integer :likes, :default => 0
+      t.integer :dislikes, :default => 0
       t.timestamps
     end
   end

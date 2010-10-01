@@ -1,8 +1,9 @@
 <h3>Create Poll</h3>
-
+<% unless @poll.errors.empty? %>
 <div class='errors'>
  <%= error_messages_for :poll %>
 </div>
+<% end %>
 
 <% form_for @poll, :poll do |f| %>
 <%= render :partial => "poll", :locals => {:f => f} %>

@@ -1,5 +1,8 @@
 <% form_tag voting_path(@poll.uniqueid) do |f|%>
 <div class='active_poll'>
+	<div class='poll_description'>
+		<%= @poll.description %>
+	</div>
 	<h2><%= @poll.question %></h2>
 	<div class='options'>
 		<% @poll.options.each do |option| %>
@@ -16,7 +19,7 @@
 <div class='discussion_form'>
 	<% form_tag discussion_path(@poll.uniqueid) do |f| %>
 		<div class='row'>
-			<%= text_area_tag 'text'%>
+			<%= text_area_tag 'text', nil, :rows => 3, :cols => 75%>
 		</div>
 		<div class='row'>
 			<%= submit_tag 'Post Comment'%>
@@ -24,9 +27,17 @@
 	<% end %>
 </div>
 <% end %>
-<% @poll.discussions.each do |discussion| %>
+
+<% @discussions.each do |discussion| %>
  <div class='comment'>
-	<%= discussion.text %>
-	-by <%= discussion.user.nickname %>
+	<div class='details'>
+		<div class='author'><strong><%= discussion.user.nickname %> </strong>Says: </div>
+		<div class='time'><%= discussion.updated_at %></div>		
+	</div>
+	<div class='desc'><%= discussion.text %></div>
+	<div class='likes'></div>
+	<div class='dislikes'></div>
  </div>	
 <%end%>
+
+<%= will_paginate @discussions %>

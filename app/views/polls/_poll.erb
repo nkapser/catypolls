@@ -1,9 +1,13 @@
-<div class="row">
-  <%=f.label :Question %>*<br/>
-  <%=f.text_field :question%>
+<div class='row'>
+	<%= f.label :brief_about_the_poll%>
+	<%= f.text_area :description%>
 </div>
 <div class="row">
-  <%= f.label :options_for_poll %><br/>
+  <%=f.label :Question %>
+  <%=f.text_field :question%>
+</div>
+  <%= f.label :options_for_poll %>
+<div class="row">
   	<% f.fields_for :options do |option_form|  %>
     	<%= render :partial => 'option_fields', :locals => { :f => option_form  } %>
 	<% end %>

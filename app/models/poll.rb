@@ -6,6 +6,7 @@ class Poll < ActiveRecord::Base
   accepts_nested_attributes_for :options, :allow_destroy => true
 
   validates_presence_of :question
+  validates_presence_of :description, :message => 'for poll cannot be blank'
 
   def self.fetch_all_active(category, page, per_page)
       self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and category_id = ?", true, self.get_category_id(category)], :per_page => per_page
@@ -26,6 +27,10 @@ class Poll < ActiveRecord::Base
         op.update_count!  
       end
       }
+  end
+  
+  def discussions_by_latest(page)
+    self.discussions.fetch_by_latest(page)
   end
   
   private

@@ -24,7 +24,7 @@ config.gem "rspec-rails", :lib => false, :version => ">= 1.3.2"
 config.gem "authlogic", :lib => false, :version => ">= 2.1.5"
 config.gem 'shoulda', :lib => false, :version => ">=2.11.0"
 config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
-
+config.gem 'paperclip', :lib => false, :version => ">=2.3.3"
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

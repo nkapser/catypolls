@@ -47,6 +47,7 @@ class PollsController < ApplicationController
   def view
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
     @discussions = @poll.discussions_by_latest(params[:page])
+    @title = "#{@poll.category.name} - #{@poll.question}"
   end
   
   def vote

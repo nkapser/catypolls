@@ -1,3 +1,8 @@
+<a name="fb_share" type='button_count' share_url="<%=external_url(@poll.uniqueid)%>"></a> 
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+        type="text/javascript">
+</script>
+
 <% form_tag voting_path(@poll.uniqueid) do |f|%>
 <div class='active_poll'>
 	<div class='poll_description'>
@@ -34,6 +39,7 @@
 		<div class='author'><strong><%= discussion.user.nickname %> </strong>Says: </div>
 		<div class='time'><%= discussion.updated_at %></div>		
 	</div>
+	<div class='author-img'><%= image_tag current_user.avatar.url(:thumb) %></div>
 	<div class='desc'><%= discussion.text %></div>
 	<div class='likes'></div>
 	<div class='dislikes'></div>

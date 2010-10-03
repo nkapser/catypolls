@@ -1,3 +1,4 @@
+public/system
 db/*.sqlite3
 db/schema.rb
 log

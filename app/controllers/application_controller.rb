@@ -53,5 +53,6 @@ class ApplicationController < ActionController::Base
     
     def current_title
       @title ||= "Create Free Polls. Share Polls. Discussion about Polls. Categorize Polls."
+      "#{self.controller_name.capitalize} - #{@title} - #{self.action_name.capitalize}"
     end
 end

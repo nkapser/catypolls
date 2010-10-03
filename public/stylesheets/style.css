@@ -80,9 +80,14 @@ form .row input[type='submit'] {position: relative;}
 
 #right_section { width: 200px;float: left; }
 #right_section { margin-left: 20px; }
+#right_section .section{ margin-bottom: 10px; }
 #right_section .heading { background-color: #E0E0E0; padding: 5px 0 5px 5px; }
-#right_section .category_polls ul{}
-#right_section .category_polls ul li{ list-style: none; padding: 2px 10px;}
+#right_section ul{}
+#right_section ul li{ list-style: none; padding: 2px 10px;}
 
-#footer {border-top: 1px solid black;margin-top: 10px;display: block;position: relative;}
+#footer {border-top: 1px solid black;margin-top: 10px;display: block;position: relative; overflow: hidden;}
+#footer .links{float:right; font-size: 12px;}
+#footer .copy {float:left;}
 #footer_content{margin-top: 20px;}
+
+.last_login { text-align: center; }

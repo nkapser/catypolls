@@ -29,6 +29,15 @@
             }
         });
 
+	$('.comment .likes').hover(function(){
+		$(this).addClass('likes-high-light');
+	}, function(){
+		$(this).remove('likes-high-light');
+	});
+
+	$('.comment .dislikes').hover(function(){
+		$(this).addClass('test');
+	});
 })(jQuery);
 
 

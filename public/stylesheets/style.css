@@ -61,7 +61,13 @@ h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 2px dashed black;
 .active_poll input[type='submit']{margin-top: 5px;}
 
 .comment { border-top: 1px dotted black; margin-top: 10px; }
+.comment .user-block{overflow:hidden;}
+.comment .user-comment{float:left; width:80%;}
+.comment .user-likes{float:right;}
+.comment .user-likes .likes{background:url("/images/img_sprites.png") no-repeat scroll -68px 0 transparent;	height:35px;	width:35px;}
+.comment .user-likes .likes-high-light{background:url("/images/img_sprites.png") no-repeat scroll 3px 0 transparent; }
 .comment .author{ font-style:italic; font-size:14px; padding: 2px 0px;}
+.comment .author-img img{padding: 2px; border: 1px solid black; margin: 0px 5px 5px 0px;}
 .comment .details{ overflow: hidden; background-color: E8E8E8; margin-bottom: 4px;}
 .comment .details .author { float:left;}
 .comment .details .time { float:right; font-size: 10px; line-height: 2em;}

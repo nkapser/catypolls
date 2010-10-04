@@ -33,16 +33,51 @@
 </div>
 <% end %>
 
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+//http://code.google.com/apis/ajax/playground/#topics
+//http://code.google.com/apis/ajaxsearch/documentation/newsshow/
+google.load("elements", "1", {packages : ["newsshow"]});
+
+function onLoad() {
+  // Set the queries to USC Football and NHL
+  var options = {
+    "queryList" : [
+      {
+        "title" : "Great Football",
+        "q" : "USC Football"
+      },
+      {
+        "q" : "NHL"
+      }
+    ]
+  }
+  var content = document.getElementById('newscontent');
+  var newsShow = new google.elements.NewsShow(content, options);
+}
+
+google.setOnLoadCallback(onLoad);
+</script>
+
+<div id='newscontent'>
+</div>
+
 <% @discussions.each do |discussion| %>
  <div class='comment'>
 	<div class='details'>
 		<div class='author'><strong><%= discussion.user.nickname %> </strong>Says: </div>
 		<div class='time'><%= discussion.updated_at %></div>		
 	</div>
-	<div class='author-img'><%= image_tag current_user.avatar.url(:thumb) %></div>
+	<div class='user-block'>
+	<div class='user-comment'>
+	<div class='author-img'><%= image_tag(current_user.avatar.url(:thumb), :height => "75px", :width => "75px", :align => "left") %></div>
 	<div class='desc'><%= discussion.text %></div>
+	</div>
+	<div class='user-likes'>
 	<div class='likes'></div>
 	<div class='dislikes'></div>
+	</div>
+	</div>
  </div>	
 <%end%>
 

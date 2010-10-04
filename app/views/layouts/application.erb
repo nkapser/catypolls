@@ -7,7 +7,6 @@
 <%= stylesheet_link_tag "style"  %>
 
 <%= javascript_include_tag "jq/jquery-1.4.2"  %>
-<%= javascript_include_tag "jq/application_jq"  %>
 <%= javascript_include_tag "jq/jquery-ui-1.8.2.custom.min"  %>
 
 
@@ -90,6 +89,7 @@ GA_googleFetchAds();
 	  <%=h current_user.last_login_ip %>
 	  </div>
 	<% end %>
+	<%= javascript_include_tag "jq/application_jq"  %>
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 class ContactusController < ApplicationController
-  
+    
   def new
+    @title = "ContactUs"    
     @contactus = Contactus.new
   end
   
@@ -15,6 +16,7 @@ class ContactusController < ApplicationController
   end
   
   def show
+    @title = "ContactUs - Response"
     redirect_to :action => :new
   end
   

@@ -8,6 +8,7 @@ class HomeController < ApplicationController
   end
   
   def aboutus
+    @title = "About Us"
   end
 
 end

@@ -53,5 +53,6 @@ class ApplicationController < ActionController::Base
     
     def current_title
       @title ||= "Create Free Polls. Share Polls. Discussion about Polls. Categorize Polls."
+      @title += " - CatyPolls"
     end
 end

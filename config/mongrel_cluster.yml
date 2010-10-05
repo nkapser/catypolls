@@ -1,0 +1,9 @@
+--- 
+group: p9r82421
+log_file: /home/p9r82421/simplepoll/log/mongrel.log
+port: "17160"
+cwd: /home/p9r82421/simplepoll
+environment: production
+user: p9r82421
+pid_file: /home/p9r82421/simplepoll/tmp/pids/mongrel.pid
+servers: 2

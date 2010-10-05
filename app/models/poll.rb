@@ -8,6 +8,8 @@ class Poll < ActiveRecord::Base
   validates_presence_of :question
   validates_presence_of :description, :message => 'for poll cannot be blank'
 
+  before_create :hyphenize_name
+
   def self.fetch_all_active(category, page, per_page)
       self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and category_id = ?", true, self.get_category_id(category)], :per_page => per_page
   end
@@ -45,5 +47,9 @@ class Poll < ActiveRecord::Base
   
   def generate_unique_id
     Digest::MD5.hexdigest(question.gsub(/[^a-zA-Z0-9]/, '-')+Time.now.to_s)
+  end
+  
+  def hyphenize_name
+    self.name = question.gsub(/[^a-zA-Z0-9]/, '-')
   end
 end

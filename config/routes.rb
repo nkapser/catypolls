@@ -44,9 +44,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.voting 'polls/:uniqueid/vote', :controller => 'polls', :action => 'vote'
-  map.external 'polls/:uniqueid/view', :controller => 'polls', :action => 'view'
+  map.external 'polls/view/:category/:name/:uniqueid', :controller => 'polls', :action => 'view'
   map.publish_poll 'polls/:id/publish', :controller => "polls", :action => "publish"
-  map.poll_result 'polls/:uniqueid/result', :controller => 'polls', :action => 'result'
+  map.poll_result 'polls/result/:category/:name/:uniqueid', :controller => 'polls', :action => 'result'
   map.resources :polls do |poll|
     poll.resources :discussions
   end

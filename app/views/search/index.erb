@@ -7,7 +7,7 @@
 	<h2>Found <%= @polls.count %> results in <%= @category.capitalize %></h2>
 	<% @polls.each do |poll| %>
 		<div class='poll'>
-			<%= link_to poll.question, external_path(poll.uniqueid)%>
+			<%= link_to poll.question, external_path({:uniqueid => poll.uniqueid, :category => @category, :name => poll.name})%>
 		</div>
 	<% end %>
 </div>

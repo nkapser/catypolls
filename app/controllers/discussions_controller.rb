@@ -4,7 +4,7 @@ class DiscussionsController < ApplicationController
     poll_uniqueid = params[:poll_unique_id]
     @poll = Poll.find_by_uniqueid(poll_uniqueid)
     @poll.discussions.create(:text => params[:text], :user_id => current_user.id)
-    redirect_to external_path(poll_uniqueid) 
+    redirect_to external_path({:uniqueid => poll_uniqueid, :category => @poll.category, :name => @poll.name}) 
   end
   
   def like

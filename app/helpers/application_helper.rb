@@ -16,5 +16,9 @@ module ApplicationHelper
   def top_categories
     ['General', 'Sports', 'Movies']
   end
+  
+  def category_collection
+    top_categories.map {|category| "<option>#{category}</option>"}
+  end
 
 end

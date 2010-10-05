@@ -4,6 +4,8 @@
 	<%= current_title %>
   </title>
 
+<%= yield :header%>
+
 <%= stylesheet_link_tag "style"  %>
 
 <%= javascript_include_tag "jq/jquery-1.4.2"  %>
@@ -53,10 +55,12 @@ GA_googleFetchAds();
 		</ul>
 	</div>
   <div id="page">
+	<div class='menu'>
+	</div>
 	<div id='main_content'>
     	<%= yield %>
 	</div>
-	<div id='right_section'>
+	<div id='right_section'>		
 		<% unless current_user.nil? %>
 		<div class='poll_create section'>			
 		<div class='heading'>Poll Management</div>
@@ -66,6 +70,10 @@ GA_googleFetchAds();
 			</ul>	
 		</div>
 		<% end %>
+		<div class='search'>			
+			<div class='heading'>Search Polls</div>
+			<%= render :partial => 'common/search'%>
+		</div>
 		<div class='category_polls section'>
 			<div class='heading'>Categories</div>
 			<ul>

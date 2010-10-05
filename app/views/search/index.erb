@@ -1,0 +1,13 @@
+<h2 class='heading'>Search Results</h2>
+
+<% if @polls.empty? %>
+	Sorry no Poll found with '<%= @query %>' keyword. 
+<% else %>
+<div class='search_results'>
+	<% @polls.each do |poll| %>
+		<div class='poll'>
+			<%= link_to poll.question, external_path(poll.uniqueid)%>
+		</div>
+	<% end %>
+</div>
+<% end %>

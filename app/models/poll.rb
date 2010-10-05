@@ -33,6 +33,10 @@ class Poll < ActiveRecord::Base
     self.discussions.fetch_by_latest(page)
   end
   
+  def self.search(query = '', page = 1)
+      self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and question like ?", true, "%#{query}%"], :per_page => per_page    
+  end
+  
   private
   def self.get_category_id(category_name)
     category = Category.find_by_name(category_name)

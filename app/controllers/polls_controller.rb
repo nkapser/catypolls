@@ -53,5 +53,13 @@ class PollsController < ApplicationController
   def vote
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
     @poll.update_vote(params[:option])
+    flash[:message] = "You have voted succesfully"
+    redirect_to :action => :result, :uniqueid => params[:uniqueid]
   end  
+  
+  def result
+    @poll = Poll.find_by_uniqueid(params[:uniqueid])
+    @discussions = @poll.discussions_by_latest(params[:page])
+    @title = "#{@poll.category.name} - #{@poll.question} - Result"    
+  end
 end

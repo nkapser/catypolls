@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   map.voting 'polls/:uniqueid/vote', :controller => 'polls', :action => 'vote'
   map.external 'polls/:uniqueid/view', :controller => 'polls', :action => 'view'
   map.publish_poll 'polls/:id/publish', :controller => "polls", :action => "publish"
+  map.poll_result 'polls/:uniqueid/result', :controller => 'polls', :action => 'result'
   map.resources :polls do |poll|
     poll.resources :discussions
   end
@@ -56,6 +57,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.connect '/contactus-response', :controller => 'contactus', :action => 'contactus_response'
   map.resource :contactus, :controller => 'contactus', :only => [:new, :create, :show]
+  
+  map.search '/search', :controller => 'search', :action => 'index'
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

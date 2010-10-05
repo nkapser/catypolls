@@ -1,31 +1,27 @@
-<% content_for :header do %>
-<meta property="og:title" content="<%= @poll.question %>" />
-<meta property="og:description" content="<%= @poll.description %>" />
-<!-- <meta property="og:image" content="thumbnail_image" /> -->
-<meta name="medium" content="news" />
-
-<% end %>
-
-<a name="fb_share"></a> 
+<a name="fb_share" type='button_count' share_url="<%=external_url(@poll.uniqueid)%>"></a> 
 <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
         type="text/javascript">
 </script>
 
-
-<% form_tag voting_path(@poll.uniqueid) do |f|%>
 <div class='active_poll'>
 	<div class='poll_description'>
 		<%= @poll.description %>
 	</div>
 	<h2><%= @poll.question %></h2>
 	<div class='options'>
-		<% @poll.options.each do |option| %>
-			<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
+		<% 
+		options = @poll.options
+		totalVotes = 0
+		options.each do |option|
+	 		totalVotes = totalVotes + option.counter			
+		end %>
+		<% totalVotes = 1 if totalVotes == 0%>
+		<% options.each do |option| %>
+			<div class='option'><%= option.name%> | <%= option.counter %> | <%= (option.counter*100)/totalVotes %>%</div>
 		<% end %>
 	</div>
-	<%= submit_tag 'vote'%>
 </div>
-<% end %>
+
 <h3>Add your comment</h3>
 <% if current_user.nil? %>
  Please <%= link_to 'login', login_path %> or <%= link_to 'Register', new_account_path %> to comment.
@@ -52,10 +48,13 @@ function onLoad() {
   // Set the queries to USC Football and NHL
   var options = {
     "queryList" : [
-    {
-      "title" : "<%= @poll.category.name%>",
-      "q" : "<%= @poll.question %>"
-    }
+      {
+        "title" : "Great Football",
+        "q" : "USC Football"
+      },
+      {
+        "q" : "NHL"
+      }
     ]
   }
   var content = document.getElementById('newscontent');

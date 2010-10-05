@@ -29,14 +29,20 @@
             }
         });
 
+	$('.comment .likes').click(function(){
+		// $.post('')
+	});
+
 	$('.comment .likes').hover(function(){
 		$(this).addClass('likes-high-light');
 	}, function(){
-		$(this).remove('likes-high-light');
+		$(this).removeClass('likes-high-light');
 	});
 
 	$('.comment .dislikes').hover(function(){
-		$(this).addClass('test');
+		$(this).addClass('dislikes-high-light');
+	}, function(){
+		$(this).removeClass('dislikes-high-light');
 	});
 })(jQuery);
 

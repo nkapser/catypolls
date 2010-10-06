@@ -8,6 +8,19 @@ class Poll < ActiveRecord::Base
   validates_presence_of :question
   validates_presence_of :description, :message => 'for poll cannot be blank'
 
+
+  has_attached_file :photo, :styles => { :medium => "300x200>" },
+                    :url  => "/assets/polls/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/polls/:id/:style/:basename.:extension"
+
+  validates_attachment_presence :photo, :if => Proc.new { |profile| profile.photo.file? }
+
+  validates_attachment_size :photo, :less_than => 200.kilobytes, :if => Proc.new { |profile| profile.photo.file? }
+  
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/gif', 'image/png', 'image/pjpeg', 'image/x-png'], 
+    :message => 'must be a JPEG, GIF or PNG image', 
+    :if => Proc.new { |profile| profile.photo.file? }
+    
   before_create :hyphenize_name
 
   def self.fetch_all_active(category, page, per_page)

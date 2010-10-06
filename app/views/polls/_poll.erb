@@ -1,10 +1,22 @@
+<% content_for :styles do %>
+	<%= stylesheet_link_tag "jquery-ui-1.8.5.custom"  %>
+<% end %>
+
 <div class='row'>
-	<%= f.label :brief_about_the_poll%>
-	<%= f.text_area :description%>
+	<%= f.label :brief_about_the_poll%><br>(why you are creating poll or little brief)<br>
+	<%= f.text_area :description, :rows => 5%>
+</div>
+<div class='row'>
+<%= f.label :photo %>
+<%= f.file_field :photo %>
+</div>
+<div class='row'>
+<%= f.label :image_courtesy %>
+<%= f.text_field :courtesy %>
 </div>
 <div class="row">
   <%=f.label :Question %>
-  <%=f.text_field :question%>
+  <%=f.text_area :question, :rows => 2%>
 </div>
   <%= f.label :options_for_poll %>
 <div class="row">
@@ -22,6 +34,6 @@
  <%= f.text_field :end_date%>
 </div>
 <div class="row">
-  <%= f.label :category %>* 
+  <%= f.label :category %>
   <%=f.select :category_id, categories %>
 </div>

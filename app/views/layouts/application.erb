@@ -5,7 +5,7 @@
   </title>
 
 <%= yield :header%>
-
+<%= yield :styles%>
 <%= stylesheet_link_tag "style"  %>
 
 <%= javascript_include_tag "jq/jquery-1.4.2"  %>
@@ -54,9 +54,10 @@ GA_googleFetchAds();
 	      <% end %>
 		</ul>
 	</div>
+	<div id='menu'>
+		Categories: <%= category_links %>
+	</div> 	
   <div id="page">
-	<div class='menu'>
-	</div>
 	<div id='main_content'>
     	<%= yield %>
 	</div>

@@ -14,11 +14,18 @@ module ApplicationHelper
   end
   
   def top_categories
-    ['General', 'Sports', 'Movies']
+    ['general', 'sports', 'movies', 'politics', 'business', 'books', 'fashion', 'news' ]
   end
   
   def category_collection
     top_categories.map {|category| "<option>#{category}</option>"}
+  end
+  
+  def category_links
+    links = top_categories.map do |category|
+      link_to(category.capitalize, category_polls_path(category))
+    end
+    links.join(' | ')
   end
 
 end

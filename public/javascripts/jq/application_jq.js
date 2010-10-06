@@ -44,6 +44,8 @@
 	}, function(){
 		$(this).removeClass('dislikes-high-light');
 	});
+	
+
 })(jQuery);
 
 

@@ -6,4 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
-Category.create([{:name => 'General'}, {:name => 'Movies'}, {:name => 'Politics'}, {:name => 'Media'}])
+
+['general', 'sports', 'movies', 'politics', 'business', 'books', 'fashion', 'news'].each do |category|
+  Category.create(:name => category)
+end

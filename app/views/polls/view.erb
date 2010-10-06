@@ -14,8 +14,11 @@
 
 <% form_tag voting_path(@poll.uniqueid) do |f|%>
 <div class='active_poll'>
-	<div class='poll_description'>
-		<%= @poll.description %>
+	<div class='poll_details'>
+		<% unless @poll.photo.nil? %>
+			<%= image_tag(@poll.photo.url(:medium), :height => "200px", :width => "300px", :align => "left") %>
+		<% end %>
+		<div class='desc'><%= @poll.description %> </div>
 	</div>
 	<h2><%= @poll.question %></h2>
 	<div class='options'>

@@ -5,7 +5,7 @@
 </div>
 <% end %>
 
-<% form_for @poll, :poll do |f| %>
+<% form_for @poll,:html => { :multipart => true } do |f| %>
 <%= render :partial => "poll", :locals => {:f => f} %>
 <div class="row">
   <%= f.submit  "Create Poll" %>

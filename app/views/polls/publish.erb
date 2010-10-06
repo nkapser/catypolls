@@ -1,4 +1,10 @@
 <h3>Poll has published successfully</h3>
-Question: <%= @poll.question %>
-Status: <%= @poll.is_published? %>
-Url: <%= external_url({:uniqueid => @poll.uniqueid, :category => @poll.category.name, :name => @poll.name}) %>
+<div class='element'>
+	Question: <%= @poll.question %>
+</div>
+<div class='element'>
+	Status: <%= @poll.is_published? %>
+</div>
+<div class='element'>
+Url: <%= link_to external_url({:uniqueid => @poll.uniqueid, :category => @poll.category.name, :name => @poll.name}), external_url({:uniqueid => @poll.uniqueid, :category => @poll.category.name, :name => @poll.name}) %>
+</div>

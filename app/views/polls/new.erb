@@ -14,7 +14,7 @@
 
 <script type='text/javascript'>
 	(function($) {
-		$("#poll_start_date").datepicker();
-		$("#poll_end_date").datepicker();
+		$("#poll_start_date").datepicker({ minDate: new Date(), maxDate: '+1w'});
+		$("#poll_end_date").datepicker({ minDate: new Date($("#poll_start_date").val()), maxDate: '+2w'});
 	})(jQuery);
 </script>

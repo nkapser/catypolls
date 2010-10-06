@@ -10,6 +10,15 @@
 
 <%= javascript_include_tag "jq/jquery-1.4.2"  %>
 <%= javascript_include_tag "jq/jquery-ui-1.8.2.custom.min"  %>
+<%= javascript_include_tag "jq/cufon-yui"  %>
+<%= javascript_include_tag "jq/delicious-font"  %>
+
+
+	<script type="text/javascript">
+		Cufon.replace('h2');
+		Cufon.replace('h3');
+		Cufon.replace('h1')
+	</script>
 
 
 <script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
@@ -102,6 +111,7 @@ GA_googleFetchAds();
 	  </div>
 	<% end %>
 	<%= javascript_include_tag "jq/application_jq"  %>
+	<script type="text/javascript"> Cufon.now(); </script>	
 	<%= render :partial => 'common/goog_scripts'%>
 </div>
 </body>

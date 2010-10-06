@@ -1,6 +1,6 @@
 <h3>Poll</h3>
 <div class='poll'>
-	Question: <%= @poll.question %>
+	Question: <%= link_to @poll.question, external_path({:name => @poll.name, :uniqueid => @poll.uniqueid, :category => @poll.category.name})%>
 	<div class='options'>
 		<ol>
 		<% total_votes = 0 %>	
@@ -16,7 +16,7 @@
 		End Date: <%= @poll.end_date %>
 	</div>
 	<div class='poll_category'>
-		Poll Category: <%= @poll.category.name %>
+		Poll Category: <%= link_to @poll.category.name %>
 	</div>
 	<%if !@poll.is_published?%>
 	<%= link_to 'Edit', edit_poll_path(@poll)%> | <%= link_to 'Publish<small>*</small>', publish_poll_path(@poll)%> 

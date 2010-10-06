@@ -39,7 +39,7 @@ h1{ font-size: 20px;}
 .lcolor { color: #CA8EFF; }
 .last_login{ font-size:12px;}
 
-h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 2px dashed black; }
+h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 2px dashed black;color:#565556; }
 
 #navigation{background:url("/images/nav-bg.png") repeat scroll 0 0 transparent;overflow:hidden;}
 #navigation ul{height:30px; float:left;}
@@ -110,6 +110,7 @@ h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 2px dashed black;
 
 /* misc */
 
-form#new_user .row input{ margin-left: 200px;}
+#main_content form#new_user .row input{ margin-left: 200px;}
+#main_content form.edit_user .row input{ margin-left: 200px;}
 .last_login { text-align: center; }
 

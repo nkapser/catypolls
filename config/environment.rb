@@ -28,6 +28,7 @@ config.gem "authlogic", :lib => false, :version => ">= 2.1.5"
 config.gem 'shoulda', :lib => false, :version => ">=2.11.0"
 config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
 config.gem 'paperclip', :lib => false, :version => ">=2.3.3"
+config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

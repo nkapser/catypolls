@@ -13,7 +13,7 @@ class PollsController < ApplicationController
   
   def create
     @poll = Poll.new(params[:poll])
-    if(@poll.save)
+    if(verify_recaptcha(:model => @poll, :message => "Oh! It's error with reCAPTCHA!") && @poll.save)
       redirect_to :action => :index
     else
       flash[:error] = "Couln't create the record!"

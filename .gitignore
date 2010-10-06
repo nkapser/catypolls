@@ -1,4 +1,4 @@
-#config/environments/production.rb
+config/environments/production.rb
 .rvmrc
 tmp
 public/assets

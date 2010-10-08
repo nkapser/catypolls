@@ -22,14 +22,14 @@ class Poll < ActiveRecord::Base
     :message => 'must be a JPEG, GIF or PNG image', 
     :if => Proc.new { |profile| profile.photo.file? }
     
-  before_create :hyphenize_name
+  before_create :hyphenize_name, :generate_unique_id
 
   def self.fetch_all_active(category, page, per_page)
       self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and category_id = ?", true, self.get_category_id(category)], :per_page => per_page
   end
   
   def publish!
-    self.update_attributes!({:is_active => true, :uniqueid => generate_unique_id})
+    self.update_attributes!({:is_active => true})
   end
   
   def is_published?
@@ -53,6 +53,10 @@ class Poll < ActiveRecord::Base
       self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and category_id = ? and question like ?", true, self.get_category_id(category), "%#{query}%"], :per_page => per_page    
   end
   
+  def increment_views!
+    self.update_attributes!({:views => self.views + 1})
+  end
+  
   private
   def self.get_category_id(category_name)
     category = Category.find_by_name(category_name)
@@ -60,7 +64,7 @@ class Poll < ActiveRecord::Base
   end
   
   def generate_unique_id
-    Digest::MD5.hexdigest(question.gsub(/[^a-zA-Z0-9]/, '-')+Time.now.to_s)
+    self.uniqueid = Digest::MD5.hexdigest(hyphenize_name+Time.now.to_s)
   end
   
   def hyphenize_name

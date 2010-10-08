@@ -1,6 +1,8 @@
 class PollsController < ApplicationController
 
   before_filter :require_user, :except => [:view, :vote]
+  
+  helper_method :pc_read
 
   def index
     @polls = Poll.find(:all, :order => 'updated_at DESC', :conditions => ["user_id = ?", current_user_session.user.id])
@@ -45,8 +47,11 @@ class PollsController < ApplicationController
     @poll.publish!
   end
   
-  def view
+  def view    
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
+    if(!pc_read.include?(@poll.id.to_s))
+      @poll.increment_views!
+    end
     @discussions = @poll.discussions_by_latest(params[:page])
     @title = "#{@poll.category.name} - #{@poll.question}"
   end
@@ -54,13 +59,28 @@ class PollsController < ApplicationController
   def vote
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
     @poll.update_vote(params[:option])
+    pc_write(@poll.id)
     flash[:message] = "You have voted succesfully"
-    redirect_to :action => :result, :uniqueid => params[:uniqueid], :category => @poll.category.name, :name => @poll.name
+    redirect_to :action => :view, :uniqueid => params[:uniqueid], :category => @poll.category.name, :name => @poll.name
   end  
   
   def result
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
     @discussions = @poll.discussions_by_latest(params[:page])
     @title = "#{@poll.category.name} - #{@poll.question} - Result"    
+  end
+  
+  private
+  
+  def pc_write(id)
+    if cookies[:_pckies].blank?
+      cookies[:_pckies] = id
+    else
+      cookies[:_pckies] = cookies[:_pckies] << ",#{id}"
+    end
+  end
+
+  def pc_read
+    cookies[:_pckies] ? cookies[:_pckies].split(",") : []
   end
 end

@@ -11,24 +11,42 @@
         type="text/javascript">
 </script>
 
-
-<% form_tag voting_path(@poll.uniqueid) do |f|%>
 <div class='active_poll'>
 	<div class='poll_details'>
-		<% unless @poll.photo.nil? %>
+		<% unless @poll.photo.url.ends_with?('missing.png') %>
 			<%= image_tag(@poll.photo.url(:medium), :height => "200px", :width => "300px", :align => "left") %>
 		<% end %>
 		<div class='desc'><%= @poll.description %> </div>
 	</div>
-	<h2><%= @poll.question %></h2>
-	<div class='options'>
-		<% @poll.options.each do |option| %>
-			<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
-		<% end %>
-	</div>
-	<%= submit_tag 'vote'%>
-</div>
+	
+<% if pc_read.include?(@poll.id.to_s) %>
+		<h2><%= @poll.question %></h2>
+		<div class='options'>
+			<% 
+			options = @poll.options
+			totalVotes = 0
+			options.each do |option|
+		 		totalVotes = totalVotes + option.counter			
+			end %>
+			<% totalVotes = 1 if totalVotes == 0%>
+			<% options.each do |option| %>
+				<div class='option'><%= option.name%> | <%= option.counter %> | <%= (option.counter*100)/totalVotes %>%</div>
+			<% end %>
+			Total Votes: <%= totalVotes%>
+		</div>
+<% else %>
+	<% form_tag voting_path(@poll.uniqueid) do |f|%>
+		<h2><%= @poll.question %></h2>
+		<div class='options'>
+			<% @poll.options.each do |option| %>
+				<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
+			<% end %>
+		</div>
+		<%= submit_tag 'vote'%>
+	<% end %>
 <% end %>
+</div>
+
 <h3>Add your comment</h3>
 <% if current_user.nil? %>
  Please <%= link_to 'login', login_path %> or <%= link_to 'Register', new_account_path %> to comment.

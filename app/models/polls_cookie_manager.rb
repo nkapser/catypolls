@@ -1,0 +1,3 @@
+class PollsCookieManager
+
+end

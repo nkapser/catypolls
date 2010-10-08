@@ -1,6 +1,7 @@
 require 'digest/md5'
 class Poll < ActiveRecord::Base
   belongs_to :category
+  belongs_to :user
   has_many :options
   has_many :discussions
   accepts_nested_attributes_for :options, :allow_destroy => true

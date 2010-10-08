@@ -3,7 +3,7 @@ class PollsController < ApplicationController
   before_filter :require_user, :except => [:view, :vote]
 
   def index
-    @polls = Poll.find(:all, :order => 'updated_at DESC')
+    @polls = Poll.find(:all, :order => 'updated_at DESC', :conditions => ["user_id = ?", current_user_session.user.id])
   end
   
   def new
@@ -13,7 +13,8 @@ class PollsController < ApplicationController
   
   def create
     @poll = Poll.new(params[:poll])
-    if(verify_recaptcha(:model => @poll, :message => "Oh! It's error with reCAPTCHA!") && @poll.save)
+    @poll.user = current_user_session.user
+    if(@poll.save)
       redirect_to :action => :index
     else
       flash[:error] = "Couln't create the record!"

@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                       :url  => "/assets/avatars/:id/:style/:basename.:extension",
                       :path => ":rails_root/public/assets/avatars/:id/:style/:basename.:extension"
     
-    attr_accessible :login, :email, :password, :password_confirmation, :openid_identifier
+    attr_accessible :nickname, :email, :password, :password_confirmation, :openid_identifier
     
     
     def activate!

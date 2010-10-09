@@ -5,16 +5,22 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  
   def create
     @user = User.new(params[:user])
-    if(verify_recaptcha(:model => @user, :message => "Oh! It's error with reCAPTCHA!") && @user.save)
-      flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+    # redirect_back_or_default account_url
+    # Saving without session maintenance to skip
+    # auto-login which can't happen here because
+    # the User has not yet been activated
+    if verify_recaptcha(:model => @user, :message => "Oh! It's error with reCAPTCHA!") && @user.save_without_session_maintenance
+      @user.deliver_activation_instructions!
+      flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+      redirect_to root_url
     else
       render :action => :new
     end
   end
+  
 
   def show
     @user = @current_user
@@ -33,4 +39,5 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+    
 end

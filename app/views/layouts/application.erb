@@ -57,6 +57,7 @@ GA_googleFetchAds();
  		</ul>
 		<ul id='login_details'>
 		 <% if current_user.nil? %>
+			<%= render :partial => 'common/facebook'%>
 	      	<li><%= link_to "Login", login_path %> | <%= link_to "Sign Up (new users)", new_account_path%></li>
 	      <% else %>      
 	      	<li>Welcome <%= current_user.email %> | <%= link_to 'Edit', edit_account_path %>  | <%= link_to "Logout",  logout_url %></li>

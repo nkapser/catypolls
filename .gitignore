@@ -1,3 +1,4 @@
+config/facebooker.yml
 config/environments/production.rb
 .rvmrc
 tmp

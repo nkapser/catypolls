@@ -11,8 +11,7 @@
 <%= javascript_include_tag "jq/jquery-1.4.2"  %>
 <%= javascript_include_tag "jq/jquery-ui-1.8.2.custom.min"  %>
 <%= javascript_include_tag "jq/cufon-yui"  %>
-
-<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+<%= javascript_include_tag "jq/delicious-font"  %>
 
 
 	<script type="text/javascript">
@@ -34,11 +33,6 @@ GA_googleAddSlot("ca-pub-1322229301618377", "test_leaderboard_top");
 <script type='text/javascript'>
 GA_googleFetchAds();
 </script>
-
-
-  <%= fb_connect_javascript_tag %>
-
-  <%= init_fb_connect "XFBML", :js => :jquery %>
 
 </head>
 <body>
@@ -63,7 +57,7 @@ GA_googleFetchAds();
  		</ul>
 		<ul id='login_details'>
 		 <% if current_user.nil? %>
-	      	<li><%= authlogic_facebook_login_button :js => :jquery %> | <%= link_to "Login", login_path %> | <%= link_to "Sign Up (new users)", new_account_path%> </li>
+	      	<li><%= link_to "Login", login_path %> | <%= link_to "Sign Up (new users)", new_account_path%></li>
 	      <% else %>      
 	      	<li>Welcome <%= current_user.email %> | <%= link_to 'Edit', edit_account_path %>  | <%= link_to "Logout",  logout_url %></li>
 	      <% end %>
@@ -72,10 +66,8 @@ GA_googleFetchAds();
 	<div id='menu'>
 		Categories: <%= category_links %>
 	</div> 	
- 	<p style="color: green"><%= flash[:notice] %></p>
-	
   <div id="page">
-	<div id='main_content'>		
+	<div id='main_content'>
     	<%= yield %>
 	</div>
 	<div id='right_section'>		

@@ -1,16 +1,19 @@
 <% content_for :header do %>
 <meta property="og:title" content="<%= @poll.question %>" />
 <meta property="og:description" content="<%= @poll.description %>" />
-<!-- <meta property="og:image" content="thumbnail_image" /> -->
+<meta property="og:image" content="thumbnail_image" />
 <meta name="medium" content="news" />
-
 <% end %>
 
 <a name="fb_share"></a> 
 <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
         type="text/javascript">
 </script>
-
+<div class='poll_meta'>
+	Last Date: <%= @poll.end_date %><br>
+	Status: <%= @poll.status %><br>
+	Category: <%= link_to @poll.category.name, category_polls_path(@poll.category.name) %>
+</div>
 <div class='active_poll'>
 	<div class='poll_details'>
 		<% unless @poll.photo.url.ends_with?('missing.png') %>
@@ -19,7 +22,7 @@
 		<div class='desc'><%= @poll.description %> </div>
 	</div>
 	
-<% if pc_read.include?(@poll.id.to_s) %>
+<% if @poll.is_active and pc_read.include?(@poll.id.to_s) %>
 		<h2><%= @poll.question %></h2>
 		<div class='options'>
 			<% 

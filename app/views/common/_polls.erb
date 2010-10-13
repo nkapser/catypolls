@@ -1,6 +1,4 @@
-<div class='active_polls'>
-	<div class='category'><strong>Category</strong>: <%= @category %></div>
-	
+<div class='active_polls'>	
 	<% if @polls.empty? %>
 		<h3>There aren't any polls in this category.</h3>
 	<% end %>
@@ -8,13 +6,14 @@
 <% @polls.each do |poll| %>
 <div class='active_poll'>
 	<% form_tag voting_path(poll.uniqueid) do |f|%>
-		<h2><%= link_to poll.question, external_path({:uniqueid => poll.uniqueid, :category => @category, :name => poll.name}) %></h2>
+		<small>Category : <%= poll.category.name %></small>
+		<h2><%= link_to poll.question, external_path({:uniqueid => poll.uniqueid, :category => poll.category.name, :name => poll.name}) %></h2>
 		<div class='options'>
 			<% poll.options.each do |option| %>
 				<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
 			<% end %>
 		</div>
-	<%= submit_tag 'vote'%> | <% if poll.discussions.count > 0 %> <%= link_to 'Join the discussion', external_path(poll.uniqueid) %> <%else%> <%= link_to 'Be First to comment on Poll', external_path({:uniqueid => poll.uniqueid, :category => @category, :name => poll.name}) %> <%end%>
+	<%= submit_tag 'vote'%> | <% if poll.discussions.count > 0 %> <%= link_to 'Join the discussion', external_path(poll.uniqueid) %> <%else%> <%= link_to 'Be First to comment on Poll', external_path({:uniqueid => poll.uniqueid, :category => poll.category.name, :name => poll.name}) %> <%end%>
 	<% end %>
 </div>
 <% end %>

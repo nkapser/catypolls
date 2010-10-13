@@ -28,6 +28,14 @@ class Poll < ActiveRecord::Base
       self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ? and category_id = ?", true, self.get_category_id(category)], :per_page => per_page
   end
   
+  def self.fetch_recent(page, per_page)
+      self.paginate :page => page, :order => 'updated_at DESC', :conditions => ["is_active = ?", true], :per_page => per_page    
+  end
+  
+  def self.fetch_most_viewed(page, per_page)
+      self.paginate :page => page, :order => 'views DESC', :conditions => ["is_active = ?", true], :per_page => per_page        
+  end
+  
   def publish!
     self.update_attributes!({:is_active => true})
   end
@@ -55,6 +63,17 @@ class Poll < ActiveRecord::Base
   
   def increment_views!
     self.update_attributes!({:views => self.views + 1})
+  end
+  
+  def status
+    if Time.now > self.end_date and self.is_active
+       self.update_attributes!({:is_active => false})      
+       "Closed" 
+    elsif Time.now > self.end_date and !self.is_active
+      "Closed"
+    else
+       "Open"
+    end
   end
   
   private

@@ -87,7 +87,9 @@ google.setOnLoadCallback(onLoad);
 	</div>
 	<div class='user-block'>
 	<div class='user-comment'>
+	<% unless current_user.nil? %>
 	<div class='author-img'><%= image_tag(current_user.avatar.url(:thumb), :height => "75px", :width => "75px", :align => "left") %></div>
+	<% end %>
 	<div class='desc'><%= discussion.text %></div>
 	</div>
 	<div class='user-likes'>

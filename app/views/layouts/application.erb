@@ -23,7 +23,7 @@
 		Cufon.replace('h1')
 	</script>
 
-
+<% unless RAILS_ENV=='development'%>
 <script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
 </script>
 <script type='text/javascript'>
@@ -36,6 +36,7 @@ GA_googleAddSlot("ca-pub-1322229301618377", "test_leaderboard_top");
 <script type='text/javascript'>
 GA_googleFetchAds();
 </script>
+<% end %>
 
 </head>
 <body>
@@ -46,10 +47,12 @@ GA_googleFetchAds();
 	</div>
 	
 	<div class='header_ad'>
+		<% unless RAILS_ENV=='development'%>
 	<!-- ca-pub-1322229301618377/test_leaderboard_top -->
 	<script type='text/javascript'>
 	GA_googleFillSlot("test_leaderboard_top");
 	</script>
+	<%end %>
 	</div>
   </div>
  	<div id='navigation'>

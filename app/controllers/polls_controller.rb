@@ -1,8 +1,6 @@
 class PollsController < ApplicationController
 
   before_filter :require_user, :except => [:view, :vote]
-  
-  helper_method :pc_read
 
   def index
     @polls = Poll.find(:all, :order => 'updated_at DESC', :conditions => ["user_id = ?", current_user_session.user.id])
@@ -68,19 +66,5 @@ class PollsController < ApplicationController
     @poll = Poll.find_by_uniqueid(params[:uniqueid])
     @discussions = @poll.discussions_by_latest(params[:page])
     @title = "#{@poll.category.name} - #{@poll.question} - Result"    
-  end
-  
-  private
-  
-  def pc_write(id)
-    if cookies[:_pckies].blank?
-      cookies[:_pckies] = id
-    else
-      cookies[:_pckies] = cookies[:_pckies] << ",#{id}"
-    end
-  end
-
-  def pc_read
-    cookies[:_pckies] ? cookies[:_pckies].split(",") : []
   end
 end

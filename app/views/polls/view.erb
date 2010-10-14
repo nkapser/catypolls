@@ -12,6 +12,7 @@
 <div class='poll_meta'>
 	Last Date: <%= @poll.end_date %><br>
 	Status: <%= @poll.status %><br>
+	Total views: <%= @poll.views%>
 	Category: <%= link_to @poll.category.name, category_polls_path(@poll.category.name) %>
 </div>
 <div class='active_poll'>
@@ -23,30 +24,9 @@
 	</div>
 	
 <% if @poll.is_active and pc_read.include?(@poll.id.to_s) %>
-		<h2><%= @poll.question %></h2>
-		<div class='options'>
-			<% 
-			options = @poll.options
-			totalVotes = 0
-			options.each do |option|
-		 		totalVotes = totalVotes + option.counter			
-			end %>
-			<% totalVotes = 1 if totalVotes == 0%>
-			<% options.each do |option| %>
-				<div class='option'><%= option.name%> | <%= option.counter %> | <%= (option.counter*100)/totalVotes %>%</div>
-			<% end %>
-			Total Votes: <%= totalVotes%>
-		</div>
+	<%= render :partial => 'common/show_poll', :locals => {:poll => @poll}%>
 <% else %>
-	<% form_tag voting_path(@poll.uniqueid) do |f|%>
-		<h2><%= @poll.question %></h2>
-		<div class='options'>
-			<% @poll.options.each do |option| %>
-				<div class='option'><%= radio_button_tag 'option', option.id %><%= option.name%></div>
-			<% end %>
-		</div>
-		<%= submit_tag 'vote'%>
-	<% end %>
+	<%= render :partial => 'common/show_poll_result', :locals => {:poll => @poll}%>
 <% end %>
 </div>
 

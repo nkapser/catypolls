@@ -27,5 +27,4 @@ module ApplicationHelper
     end
     links.join(' | ')
   end
-
 end

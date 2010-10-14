@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
    filter_parameter_logging :password, :password_confirmation
-    helper_method :current_user_session, :current_user
+    helper_method :current_user_session, :current_user, :pc_read
 
     helper_method :current_title
     
@@ -57,4 +57,16 @@ class ApplicationController < ActionController::Base
       @title ||= "Create Free Polls. Share Polls. Discussion about Polls. Categorize Polls."
       @title += " - CatyPolls"
     end
+    
+    def pc_write(id)
+      if cookies[:_pckies].blank?
+        cookies[:_pckies] = id
+      else
+        cookies[:_pckies] = cookies[:_pckies] << ",#{id}"
+      end
+    end
+
+    def pc_read
+      cookies[:_pckies] ? cookies[:_pckies].split(",") : []
+    end    
 end

@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
 
   def activation_instructions(user)
     subject       "Activation Instructions"
-    from          "admin@catypolls.com" # Removed name/brackets around 'from' to resolve "555 5.5.2 Syntax error." as of Rails 2.3.3
+    from          "donotreply@catypolls.com" # Removed name/brackets around 'from' to resolve "555 5.5.2 Syntax error." as of Rails 2.3.3
     recipients    user.email
     sent_on       Time.now
     body          :account_activation_url => activate_url(user.perishable_token)
@@ -10,7 +10,7 @@ class Notifier < ActionMailer::Base
 
   def welcome(user)
     subject       "Welcome to the site!"
-    from          "admin@catypolls.com"
+    from          "donotreply@catypolls.com"
     recipients    user.email
     sent_on       Time.now
     body          :root_url => root_url

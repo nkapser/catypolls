@@ -3,7 +3,7 @@
 <div class='poll_meta'>
 	Last Date: <%= @poll.end_date %><br>
 	Status: <%= @poll.status %><br>
-	Total views: <%= @poll.views%>
+	Total views: <%= @poll.views%><br>
 	Category: <%= link_to @poll.category.name, category_polls_path(@poll.category.name) %>
 </div>
 <div class='active_poll'>

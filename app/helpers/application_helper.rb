@@ -18,7 +18,7 @@ module ApplicationHelper
   end
   
   def category_collection
-    top_categories.map {|category| "<option>#{category}</option>"}
+    ["<option>all</option>"] << top_categories.map {|category| "<option>#{category}</option>"}
   end
   
   def category_links

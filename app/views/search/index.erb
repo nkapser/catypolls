@@ -1,14 +1,18 @@
 <h2 class='heading'>Search Results</h2>
 
 <% if @polls.empty? %>
-	Sorry no Poll found with '<%= @query %>' keyword in "<%= @category.capitalize %>" category.
+	Sorry no Poll found with '<%= @query %>' keyword in <%= link_to @category.capitalize, category_polls_path(@category) %> category.
 <% else %>
 <div class='search_results'>
-	<h2>Found <%= @polls.count %> results in <%= @category.capitalize %></h2>
+	<h2>Found <%= @polls.count %> results in <%= link_to @category.capitalize, category_polls_path(@category) %></h2>
+	<ul>
 	<% @polls.each do |poll| %>
-		<div class='poll'>
+		<li>
+		<span class='poll'>
 			<%= link_to poll.question, external_path({:uniqueid => poll.uniqueid, :category => @category, :name => poll.name})%>
-		</div>
+		</span>
+		</li>
 	<% end %>
+	</ul>
 </div>
 <% end %>

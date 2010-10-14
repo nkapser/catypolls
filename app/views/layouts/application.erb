@@ -70,6 +70,9 @@ GA_googleFetchAds();
 	<div id='menu'>
 		Categories: <%= category_links %>
 	</div>
+	<div class='linkads'>
+		<%= render :partial => 'common/linkads'%>
+	</div>
 	<div class='notice'>
 		<%unless flash[:notice].nil?%>
 		<%= flash[:notice]%>

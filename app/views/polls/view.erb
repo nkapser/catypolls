@@ -5,10 +5,17 @@
 <meta name="medium" content="news" />
 <% end %>
 
-<a name="fb_share"></a> 
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
-        type="text/javascript">
-</script>
+<div class='social_block'>
+<div class='fbshare'>
+	<a name="fb_share"></a> 
+	<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+	        type="text/javascript">
+	</script>
+</div>
+<div class='twshare'>
+	<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="catypolls">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</div>
+</div>
 <div class='poll_meta'>
 	Last Date: <%= @poll.end_date %><br>
 	Status: <%= @poll.status %><br>

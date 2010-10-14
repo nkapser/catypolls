@@ -69,7 +69,12 @@ GA_googleFetchAds();
 	</div>
 	<div id='menu'>
 		Categories: <%= category_links %>
-	</div> 	
+	</div>
+	<div class='notice'>
+		<%unless flash[:notice].nil?%>
+		<%= flash[:notice]%>
+		<% end%>
+	</div>	 	
   <div id="page">
 	<div id='main_content'>
     	<%= yield %>

@@ -6,7 +6,7 @@ class Poll < ActiveRecord::Base
   has_many :discussions
   accepts_nested_attributes_for :options, :allow_destroy => true
 
-  validates_presence_of :question
+  validates_presence_of :question, :start_date, :end_date
   validates_presence_of :description, :message => 'for poll cannot be blank'
 
 

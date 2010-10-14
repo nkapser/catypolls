@@ -1,4 +1,4 @@
-<h2><%= poll.question %></h2>
+<h2><%= link_to poll.question, external_path({:category => poll.category.name,:uniqueid => poll.uniqueid, :name => poll.name}) %></h2>
 <div class='options'>
 	<% 
 	options = poll.options

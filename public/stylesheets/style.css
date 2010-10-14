@@ -35,6 +35,8 @@ root {display: block;}
 #page ul li { line-height:1.8em;margin-left:20px;}
 #page ul.small{font-size:12px;}
 
+#page .small{font-size:11px;}
+
 #main_content {width: 728px;float: left;}
 
 h1{ font-size: 20px;}
@@ -94,6 +96,7 @@ h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 1px solid black;c
 .social_block {overflow:hidden;float:right; margin-top: 5px;}
 .social_block .fbshare{float:left;}
 .social_block .twshare{float:left; margin-left:10px;}
+.social_block .gshare{float:left; padding-right:10px;}
 
 .warn { font-size:12px; float:right; color: #ff0909;}
 

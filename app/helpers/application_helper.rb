@@ -27,4 +27,13 @@ module ApplicationHelper
     end
     links.join(' | ')
   end
+  
+  def get_total_votes(poll)
+  	options = poll.options
+  	totalVotes = 0
+  	options.each do |option|
+   		totalVotes = totalVotes + option.counter			
+  	end
+  	totalVotes
+  end
 end

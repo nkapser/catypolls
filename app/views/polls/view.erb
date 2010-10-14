@@ -1,21 +1,5 @@
-<% content_for :header do %>
-<meta property="og:title" content="<%= @poll.question %>" />
-<meta property="og:description" content="<%= @poll.description %>" />
-<meta property="og:image" content="thumbnail_image" />
-<meta name="medium" content="news" />
-<% end %>
+<%= render :partial => 'common/social_share', :locals => {:poll => @poll} %>
 
-<div class='social_block'>
-<div class='fbshare'>
-	<a name="fb_share"></a> 
-	<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
-	        type="text/javascript">
-	</script>
-</div>
-<div class='twshare'>
-	<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="catypolls">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-</div>
-</div>
 <div class='poll_meta'>
 	Last Date: <%= @poll.end_date %><br>
 	Status: <%= @poll.status %><br>
@@ -87,9 +71,7 @@ google.setOnLoadCallback(onLoad);
 	</div>
 	<div class='user-block'>
 	<div class='user-comment'>
-	<% unless current_user.nil? %>
-	<div class='author-img'><%= image_tag(current_user.avatar.url(:thumb), :height => "75px", :width => "75px", :align => "left") %></div>
-	<% end %>
+	<div class='author-img'><%= image_tag(discussion.user.avatar.url(:thumb), :height => "75px", :width => "75px", :align => "left") %></div>
 	<div class='desc'><%= discussion.text %></div>
 	</div>
 	<div class='user-likes'>

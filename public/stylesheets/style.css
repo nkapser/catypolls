@@ -21,7 +21,7 @@ vertical-align: baseline;
 background: transparent;
 }
 
-body{font-family: arial,helvetica,sans;}
+body{font-family: arial,helvetica,sans; font-size:14px;line-height:1.4em;}
 
 root {display: block;}
 
@@ -32,6 +32,8 @@ root {display: block;}
 #header .header_ad{float:right;}
 
 #page {overflow: hidden;margin-top: 20px;}
+#page ul li { line-height:1.8em;margin-left:20px;}
+#page ul.small{font-size:12px;}
 
 #main_content {width: 728px;float: left;}
 
@@ -39,7 +41,7 @@ h1{ font-size: 20px;}
 .lcolor { color: #CA8EFF; }
 .last_login{ font-size:12px;}
 
-h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 2px dashed black;color:#565556; }
+h2.heading { font-size:22px;margin-bottom:10px; border-bottom: 1px solid black;color:#565556; }
 
 #navigation{background:url("/images/nav-bg.png") repeat scroll 0 0 transparent;overflow:hidden;}
 #navigation ul{height:30px; float:left;}

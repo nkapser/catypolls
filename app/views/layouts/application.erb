@@ -101,7 +101,7 @@ GA_googleFetchAds();
   <div id="footer">
     <div id='footer_content'>	
 		<div class='copy'>&copy;CatyPolls 2010</div> 
-		<div class='links'><%= link_to "About Us", about_us_path %> | <%= link_to "Contact Us", contactus_path %></div>
+		<div class='links'><%= link_to "About Us", about_us_path %> | <%= link_to "Contact Us", contactus_path %> | <%= link_to "Privacy Policy", privacy_policy_path%></div>
 	</div>
   </div>
 	<% if !current_user.nil? and !current_user.last_login_ip.nil? %>

@@ -26,6 +26,9 @@
 	<div class='row'>
 		<%= f.label :description %>
 		<%= f.text_area :description%>
+	</div>
+	<div class='row' style='margin-left:100px'>
+		<%= recaptcha_tags :public_key => '6LeEo70SAAAAAJ9K9lR-7QaQf1oaTdEp_5CPByUO' %>
 	</div>				
 	<div class='row'>
 		<%= f.submit 'Submit'%>

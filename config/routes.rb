@@ -35,6 +35,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # See how all your routes lay out with "rake routes"
   map.root :controller => "home"
+  map.about_us '/about-us', :controller => 'home', :action => 'aboutus'
+  map.privacy_policy '/privacy-policy', :controller => 'home', :action => 'privacypolicy'
   
   map.activate '/activate/:activation_code', :controller => 'activations', :action => 'create'  
 
@@ -53,7 +55,6 @@ ActionController::Routing::Routes.draw do |map|
     poll.resources :discussions
   end
 
-  map.about_us '/about-us', :controller => 'home', :action => 'aboutus'
   map.category_polls '/:category/polls', :controller => 'categories', :action => "index"
   map.discussion '/discussion/:poll_unique_id', :controller => 'discussions', :action => 'new'
 

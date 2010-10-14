@@ -7,7 +7,7 @@ class ContactusController < ApplicationController
   
   def create
     @contactus = Contactus.new(params[:contactus])
-    if(@contactus.save)
+    if(verify_recaptcha(:model => @contactus, :message => "Oh! It's error with reCAPTCHA!") && @contactus.save)
       flash[:message] = 'Thank You for contacting us. We will respond to you soon.'
       redirect_to :action => :contactus_response
     else

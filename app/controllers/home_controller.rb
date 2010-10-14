@@ -10,5 +10,9 @@ class HomeController < ApplicationController
   def aboutus
     @title = "About Us"
   end
+  
+  def privacypolicy
+    @title = "Privacy Policy"
+  end
 
 end

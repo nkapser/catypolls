@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @category = params['category']
     page = params[:page]
-    per_page = 2
+    per_page = 5
     @polls = @category.nil? ? Poll.fetch_recent(page, per_page) : Poll.fetch_all_active(@category, page, per_page)
   end
   

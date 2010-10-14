@@ -45,7 +45,7 @@ GA_googleFetchAds();
 	<div class='header_ad'>
 	<!-- ca-pub-1322229301618377/test_leaderboard_top -->
 	<script type='text/javascript'>
-	// GA_googleFillSlot("test_leaderboard_top");
+	GA_googleFillSlot("test_leaderboard_top");
 	</script>
 	</div>
   </div>
@@ -57,7 +57,7 @@ GA_googleFetchAds();
  		</ul>
 		<ul id='login_details'>
 		 <% if current_user.nil? %>
-			<%= render :partial => 'common/facebook'%>
+			<%#= render :partial => 'common/facebook'%>
 	      	<li><%= link_to "Login", login_path %> | <%= link_to "Sign Up (new users)", new_account_path%></li>
 	      <% else %>      
 	      	<li>Welcome <%= current_user.email %> | <%= link_to 'Edit', edit_account_path %>  | <%= link_to "Logout",  logout_url %></li>
@@ -86,7 +86,7 @@ GA_googleFetchAds();
 			<%= render :partial => 'common/search'%>
 		</div>
 		<div class='goog_ad'>
-			<!-- TODO: should render google adsense here... -->
+			<%= render :partial => 'common/goog_ad_rect'%>
 		</div>
 		<div class='category_polls section'>
 			<div class='heading'>Categories</div>

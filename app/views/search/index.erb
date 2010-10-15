@@ -1,7 +1,7 @@
 <h2 class='heading'>Search Results</h2>
 
 <% if @polls.empty? %>
-	Sorry no Poll found with '<%= @query %>' keyword in <%= link_to @category.capitalize, category_polls_path(@category) %> category.
+	Sorry no Poll found with '<%=h @query %>' keyword in <%=link_to @category.capitalize, category_polls_path(@category) %> category.
 <% else %>
 <div class='search_results'>
 	<h2>Found <%= @polls.count %> results in <%= link_to @category.capitalize, category_polls_path(@category) %></h2>

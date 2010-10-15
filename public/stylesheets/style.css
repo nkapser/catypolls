@@ -36,6 +36,7 @@ root {display: block;}
 #page ul.small{font-size:12px;}
 
 #page .small{font-size:11px;}
+#page .notice{-moz-border-radius:10px 10px 10px 10px;background-color:#87CEEB;font-weight:700;margin-top:5px;padding:10px;}
 
 #main_content {width: 728px;float: left;}
 

@@ -1,8 +1,8 @@
 <% content_for :header do %>
-<meta property="og:title" content="<%= poll.question %>" />
-<meta property="og:description" content="<%= poll.description %>" />
+<meta property="og:title" content='"<%= poll.question %>"' />
+<meta property="og:description" content='"<%= poll.description %>"' />
 <% unless poll.photo.url.ends_with?('missing.png') %>
-	<meta property="og:image" content="<%= image_tag(poll.photo.url(:medium)) %>"/>
+	<meta property="og:image" content='"<%= image_tag(poll.photo.url(:medium)) %>"'/>
 <% end %>
 <meta name="medium" content="news" />
 <% end %>
